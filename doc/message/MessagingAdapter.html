@@ -30,12 +30,7 @@
     
         <h2><span class="attribs"><span class="type-signature">(abstract) </span></span>MessagingAdapter<span class="signature">(host, port, user)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">MessagingAdapter
-
-Abstract base class for messaging adapters. Implementations available:
-<ul>
- <li><a href="MqttMessagingAdapter.html">MqttMessagingAdapter</a></li>
-</ul></div>
+            <div class="class-description">MessagingAdapterAbstract base class for messaging adapters. Implementations available:<ul> <li><a href="MqttMessagingAdapter.html">MqttMessagingAdapter</a></li></ul></div>
         
     
 </header>
@@ -232,6 +227,8 @@ Abstract base class for messaging adapters. Implementations available:
 
 
 
+
+
     
     </div>
 
@@ -310,7 +307,7 @@ Abstract base class for messaging adapters. Implementations available:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line86">line 86</a>
+        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -320,6 +317,8 @@ Abstract base class for messaging adapters. Implementations available:
 
     
 </dl>
+
+
 
 
 
@@ -406,6 +405,8 @@ Abstract base class for messaging adapters. Implementations available:
 
     
 </dl>
+
+
 
 
 
@@ -531,7 +532,7 @@ Abstract base class for messaging adapters. Implementations available:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line70">line 70</a>
+        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -559,13 +560,15 @@ Abstract base class for messaging adapters. Implementations available:
 
 
 
+
+
         
             
 
     
 
     
-    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(message, channel)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(message, channel, options)</span><span class="type-signature"></span></h4>
     
 
     
@@ -652,6 +655,101 @@ Abstract base class for messaging adapters. Implementations available:
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">send options such as delivery guarantees, retain
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>qos</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">0 - at most once, 1 - at least once, 2 - exactly once</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>retain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">retain message copy in channel for clients joining after the send.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -689,7 +787,7 @@ Abstract base class for messaging adapters. Implementations available:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line64">line 64</a>
+        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -699,6 +797,8 @@ Abstract base class for messaging adapters. Implementations available:
 
     
 </dl>
+
+
 
 
 
@@ -824,7 +924,7 @@ Abstract base class for messaging adapters. Implementations available:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line76">line 76</a>
+        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -834,6 +934,8 @@ Abstract base class for messaging adapters. Implementations available:
 
     
 </dl>
+
+
 
 
 
@@ -910,7 +1012,7 @@ Abstract base class for messaging adapters. Implementations available:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line81">line 81</a>
+        <a href="messenger_messagingadapter_MessagingAdapter.js.html">messenger/messagingadapter/MessagingAdapter.js</a>, <a href="messenger_messagingadapter_MessagingAdapter.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -920,6 +1022,8 @@ Abstract base class for messaging adapters. Implementations available:
 
     
 </dl>
+
+
 
 
 
@@ -1032,6 +1136,8 @@ Abstract base class for messaging adapters. Implementations available:
 
 
 
+
+
         
             
 
@@ -1046,8 +1152,7 @@ Abstract base class for messaging adapters. Implementations available:
 
 
 <div class="description">
-    A failure occured during setup of the  connection to the messaging
-server.
+    A failure occured during setup of the  connection to the messagingserver.
 </div>
 
 
@@ -1101,6 +1206,8 @@ server.
 
     
 </dl>
+
+
 
 
 
@@ -1187,6 +1294,8 @@ server.
 
     
 </dl>
+
+
 
 
 
@@ -1343,6 +1452,8 @@ server.
 
 
 
+
+
         
     
 </article>
@@ -1355,13 +1466,13 @@ server.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-MessageFactory.html">MessageFactory</a></li><li><a href="module-MessageIdGenerator.html">MessageIdGenerator</a></li></ul><h3>Classes</h3><ul><li><a href="ChannelMap.html">ChannelMap</a></li><li><a href="ContentIdChange.html">ContentIdChange</a></li><li><a href="ContextREQ.html">ContextREQ</a></li><li><a href="ContextRESP.html">ContextRESP</a></li><li><a href="DeviceREQ.html">DeviceREQ</a></li><li><a href="DeviceRESP.html">DeviceRESP</a></li><li><a href="JoinREQ.html">JoinREQ</a></li><li><a href="JoinRESP.html">JoinRESP</a></li><li><a href="LeaveREQ.html">LeaveREQ</a></li><li><a href="LeaveRESP.html">LeaveRESP</a></li><li><a href="Message.html">Message</a></li><li><a href="MessageDispatcher.html">MessageDispatcher</a></li><li><a href="MessageParams.html">MessageParams</a></li><li><a href="MessagingAdapter.html">MessagingAdapter</a></li><li><a href="Messenger.html">Messenger</a></li><li><a href="MqttMessagingAdapter.html">MqttMessagingAdapter</a></li><li><a href="PahoMqttMessagingAdapter.html">PahoMqttMessagingAdapter</a></li><li><a href="ParameterList.html">ParameterList</a></li><li><a href="PingREQ.html">PingREQ</a></li><li><a href="PingRESP.html">PingRESP</a></li><li><a href="REQParams.html">REQParams</a></li><li><a href="RESParams.html">RESParams</a></li><li><a href="StopTimelineUpdateREQ.html">StopTimelineUpdateREQ</a></li><li><a href="TimelineDeRegistrationREQ.html">TimelineDeRegistrationREQ</a></li><li><a href="TimelineDeRegistrationRESP.html">TimelineDeRegistrationRESP</a></li><li><a href="TimelineEndRegistrationREQ.html">TimelineEndRegistrationREQ</a></li><li><a href="TimelineEndSubscriptionRESP.html">TimelineEndSubscriptionRESP</a></li><li><a href="TimelineQuery.html">TimelineQuery</a></li><li><a href="TimelineRegistrationREQ.html">TimelineRegistrationREQ</a></li><li><a href="TimelineRegistrationRESP.html">TimelineRegistrationRESP</a></li><li><a href="TimelineREQ.html">TimelineREQ</a></li><li><a href="TimelineRESP.html">TimelineRESP</a></li><li><a href="TimelineSubscriptionREQ.html">TimelineSubscriptionREQ</a></li><li><a href="TimelineSubscriptionRESP.html">TimelineSubscriptionRESP</a></li><li><a href="TimelineUpdate.html">TimelineUpdate</a></li><li><a href="TimelineUpdateREQ.html">TimelineUpdateREQ</a></li><li><a href="TimelineUpdateRESP.html">TimelineUpdateRESP</a></li></ul><h3>Events</h3><ul><li><a href="MessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="MessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="MessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="MessagingAdapter.html#event:message">message</a></li><li><a href="Messenger.html#event:message">message</a></li><li><a href="Messenger.html#event:request">request</a></li><li><a href="MqttMessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="MqttMessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="MqttMessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="MqttMessagingAdapter.html#event:message">message</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="PahoMqttMessagingAdapter.html#event:message">message</a></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-MessageFactory.html">MessageFactory</a></li><li><a href="module-MessageIdGenerator.html">MessageIdGenerator</a></li></ul><h3>Classes</h3><ul><li><a href="ChannelMap.html">ChannelMap</a></li><li><a href="ContentIdChange.html">ContentIdChange</a></li><li><a href="ContextREQ.html">ContextREQ</a></li><li><a href="ContextRESP.html">ContextRESP</a></li><li><a href="DeviceREQ.html">DeviceREQ</a></li><li><a href="DeviceRESP.html">DeviceRESP</a></li><li><a href="DeviceStatus.html">DeviceStatus</a></li><li><a href="JoinREQ.html">JoinREQ</a></li><li><a href="JoinRESP.html">JoinRESP</a></li><li><a href="LeaveREQ.html">LeaveREQ</a></li><li><a href="LeaveRESP.html">LeaveRESP</a></li><li><a href="Message.html">Message</a></li><li><a href="MessageDispatcher.html">MessageDispatcher</a></li><li><a href="MessageParams.html">MessageParams</a></li><li><a href="MessagingAdapter.html">MessagingAdapter</a></li><li><a href="Messenger.html">Messenger</a></li><li><a href="MqttMessagingAdapter.html">MqttMessagingAdapter</a></li><li><a href="PahoMqttMessagingAdapter.html">PahoMqttMessagingAdapter</a></li><li><a href="ParameterList.html">ParameterList</a></li><li><a href="PingREQ.html">PingREQ</a></li><li><a href="PingRESP.html">PingRESP</a></li><li><a href="REQParams.html">REQParams</a></li><li><a href="RESParams.html">RESParams</a></li><li><a href="StopTimelineUpdateREQ.html">StopTimelineUpdateREQ</a></li><li><a href="SyncTimelinesAvailable.html">SyncTimelinesAvailable</a></li><li><a href="SyncTimelinesRESP.html">SyncTimelinesRESP</a></li><li><a href="TimelineDeRegistrationREQ.html">TimelineDeRegistrationREQ</a></li><li><a href="TimelineDeRegistrationRESP.html">TimelineDeRegistrationRESP</a></li><li><a href="TimelineEndRegistrationREQ.html">TimelineEndRegistrationREQ</a></li><li><a href="TimelineEndSubscriptionRESP.html">TimelineEndSubscriptionRESP</a></li><li><a href="TimelineQuery.html">TimelineQuery</a></li><li><a href="TimelineRegistrationREQ.html">TimelineRegistrationREQ</a></li><li><a href="TimelineRegistrationRESP.html">TimelineRegistrationRESP</a></li><li><a href="TimelineREQ.html">TimelineREQ</a></li><li><a href="TimelineRESP.html">TimelineRESP</a></li><li><a href="TimelineSubscriptionREQ.html">TimelineSubscriptionREQ</a></li><li><a href="TimelineSubscriptionRESP.html">TimelineSubscriptionRESP</a></li><li><a href="TimelineUpdate.html">TimelineUpdate</a></li><li><a href="TimelineUpdateREQ.html">TimelineUpdateREQ</a></li><li><a href="TimelineUpdateRESP.html">TimelineUpdateRESP</a></li><li><a href="UnexpectedDeviceExit.html">UnexpectedDeviceExit</a></li></ul><h3>Events</h3><ul><li><a href="MessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="MessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="MessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="MessagingAdapter.html#event:message">message</a></li><li><a href="Messenger.html#event:message">message</a></li><li><a href="Messenger.html#event:request">request</a></li><li><a href="MqttMessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="MqttMessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="MqttMessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="MqttMessagingAdapter.html#event:message">message</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="PahoMqttMessagingAdapter.html#event:message">message</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Dec 07 2017 14:44:57 GMT+0000 (GMT)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 18 2024 20:19:23 GMT+0100 (British Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

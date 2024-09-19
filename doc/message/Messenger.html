@@ -165,80 +165,21 @@
 
 
 
+
+
     <h5>Examples</h5>
     
         <p class="code-caption">Example 1.: Get an instance of Messenger</p>
     
-    <pre class="prettyprint"><code>var Messenger, MessagingAdapter,
-    messenger, adapter;
-
-Messenger = require("Messenger");
-MessagingAdapter = require("MqttMessagingAdapter");
-
-adapter = new MessagingAdapter("192.168.60.200", 8123, "device1");
-messenger = new Messenger(adapter);</code></pre>
+    <pre class="prettyprint"><code>var Messenger, MessagingAdapter,    messenger, adapter;Messenger = require("Messenger");MessagingAdapter = require("MqttMessagingAdapter");adapter = new MessagingAdapter("192.168.60.200", 8123, "device1");messenger = new Messenger(adapter);</code></pre>
 
         <p class="code-caption">Example 2.: Send a request message for which a response is expected</p>
     
-    <pre class="prettyprint"><code>// Assume we already have created an instance of Messenger (Example 1.)
-
-var MessageFactory, MessageIdGenerator, 
-    request, reqChannel, respChannel;
-
-MessageFactory = require("MessageFactory");
-MessageIdGenerator = require("MessageIdGenerator");
-
-reqChannel = "sessions/123/REQ";
-respChannel = "sessions/123/RESP";
-
-request = MessageFactory.create(
-    "JoinREQ",
-    "session1",
-    "device1",
-    respChannel,
-    MessageIdGenerator.getNewId(),
-    "0.0.1"
-);
-
-messenger.listen(respChannel);
-messenger.sendRequest(message, reqChannel, handleResponse, {
-
-    // A response is expected within 1500 miliseconds
-    responseTimeoutMS: 1500
-
-    // Messenger shall retry 2 times, if a response is not received within the timeout
-    maxRetry: 2,
-
-    // Call this handler after 3 failed send attemps
-    onMaxRetryFailed: handleRetryFailed
-});
-
-function handleResponse (response) {
-    // Do something
-}
-
-function handleRetryFailed (error) {
-    // Do something, e.g. display a message to the user
-}</code></pre>
+    <pre class="prettyprint"><code>// Assume we already have created an instance of Messenger (Example 1.)var MessageFactory, MessageIdGenerator,     request, reqChannel, respChannel;MessageFactory = require("MessageFactory");MessageIdGenerator = require("MessageIdGenerator");reqChannel = "sessions/123/REQ";respChannel = "sessions/123/RESP";request = MessageFactory.create(    "JoinREQ",    "session1",    "device1",    respChannel,    MessageIdGenerator.getNewId(),    "0.0.1");messenger.listen(respChannel);messenger.sendRequest(message, reqChannel, handleResponse, {    // A response is expected within 1500 miliseconds    responseTimeoutMS: 1500    // Messenger shall retry 2 times, if a response is not received within the timeout    maxRetry: 2,    // Call this handler after 3 failed send attemps    onMaxRetryFailed: handleRetryFailed});function handleResponse (response) {    // Do something}function handleRetryFailed (error) {    // Do something, e.g. display a message to the user}</code></pre>
 
         <p class="code-caption">Example 3.: Send and receive messages, receive requests</p>
     
-    <pre class="prettyprint"><code>// Assume we already have created a message and defined a 
-// message channel (Example 2.). Also we have retrieved a 
-// Messenger instance (Example 1.)
-
-messenger.on("message", handleMessage);
-messenger.on("request", handleRequest);
-messenger.send(message, channel);
-
-function handleMessage (message) {
-    // Do something with the message
-}
-
-function handleRequest (request) {
-    // Process request and send a response message to:
-    // 'request.responseChannel'
-}</code></pre>
+    <pre class="prettyprint"><code>// Assume we already have created a message and defined a // message channel (Example 2.). Also we have retrieved a // Messenger instance (Example 1.)messenger.on("message", handleMessage);messenger.on("request", handleRequest);messenger.send(message, channel);function handleMessage (message) {    // Do something with the message}function handleRequest (request) {    // Process request and send a response message to:    // 'request.responseChannel'}</code></pre>
 
 
 
@@ -392,7 +333,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line250">line 250</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line253">line 253</a>
     </li></ul></dd>
     
 
@@ -402,6 +343,8 @@ function handleRequest (request) {
 
     
 </dl>
+
+
 
 
 
@@ -478,7 +421,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line240">line 240</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line243">line 243</a>
     </li></ul></dd>
     
 
@@ -488,6 +431,8 @@ function handleRequest (request) {
 
     
 </dl>
+
+
 
 
 
@@ -613,7 +558,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line217">line 217</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line220">line 220</a>
     </li></ul></dd>
     
 
@@ -648,13 +593,15 @@ function handleRequest (request) {
 
 
 
+
+
         
             
 
     
 
     
-    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(message, channel)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(message, channel, options)</span><span class="type-signature"></span></h4>
     
 
     
@@ -741,6 +688,101 @@ function handleRequest (request) {
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">send options such as delivery guarantees, retain
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>qos</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">0 - at most once, 1 - at least once, 2 - exactly once</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>retain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">retain message copy in channel for clients joining after the send.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -778,7 +820,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line146">line 146</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line149">line 149</a>
     </li></ul></dd>
     
 
@@ -788,6 +830,8 @@ function handleRequest (request) {
 
     
 </dl>
+
+
 
 
 
@@ -1117,8 +1161,7 @@ function handleRequest (request) {
                 </td>
             
 
-            <td class="description last">Handler to be called after maxRetry requests
-     have not been responded to within responseTimeoutMS miliseconds.</td>
+            <td class="description last">Handler to be called after maxRetry requests     have not been responded to within responseTimeoutMS miliseconds.</td>
         </tr>
 
     
@@ -1205,7 +1248,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line173">line 173</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line176">line 176</a>
     </li></ul></dd>
     
 
@@ -1215,6 +1258,8 @@ function handleRequest (request) {
 
     
 </dl>
+
+
 
 
 
@@ -1340,7 +1385,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line226">line 226</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line229">line 229</a>
     </li></ul></dd>
     
 
@@ -1350,6 +1395,8 @@ function handleRequest (request) {
 
     
 </dl>
+
+
 
 
 
@@ -1426,7 +1473,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line233">line 233</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line236">line 236</a>
     </li></ul></dd>
     
 
@@ -1436,6 +1483,8 @@ function handleRequest (request) {
 
     
 </dl>
+
+
 
 
 
@@ -1563,7 +1612,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line150">line 150</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -1573,6 +1622,8 @@ function handleRequest (request) {
 
     
 </dl>
+
+
 
 
 
@@ -1764,7 +1815,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line255">line 255</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line258">line 258</a>
     </li></ul></dd>
     
 
@@ -1883,7 +1934,7 @@ function handleRequest (request) {
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line155">line 155</a>
+        <a href="messenger_Messenger.js.html">messenger/Messenger.js</a>, <a href="messenger_Messenger.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -1893,6 +1944,8 @@ function handleRequest (request) {
 
     
 </dl>
+
+
 
 
 
@@ -1931,8 +1984,7 @@ function handleRequest (request) {
 
 
 <div class="description">
-    A message has been received. The message is not an awaited response 
-to a request sent with <a href="Messenger.html#sendRequest">Messenger#sendRequest</a>.
+    A message has been received. The message is not an awaited response to a request sent with <a href="Messenger.html#sendRequest">Messenger#sendRequest</a>.
 </div>
 
 
@@ -2014,6 +2066,8 @@ to a request sent with <a href="Messenger.html#sendRequest">Messenger#sendReques
 
 
 
+
+
         
             
 
@@ -2028,8 +2082,7 @@ to a request sent with <a href="Messenger.html#sendRequest">Messenger#sendReques
 
 
 <div class="description">
-    A request message has been received. The message is not an awaited response 
-to a request sent with <a href="Messenger.html#sendRequest">Messenger#sendRequest</a>.
+    A request message has been received. The message is not an awaited response to a request sent with <a href="Messenger.html#sendRequest">Messenger#sendRequest</a>.
 </div>
 
 
@@ -2111,6 +2164,8 @@ to a request sent with <a href="Messenger.html#sendRequest">Messenger#sendReques
 
 
 
+
+
         
     
 </article>
@@ -2123,13 +2178,13 @@ to a request sent with <a href="Messenger.html#sendRequest">Messenger#sendReques
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-MessageFactory.html">MessageFactory</a></li><li><a href="module-MessageIdGenerator.html">MessageIdGenerator</a></li></ul><h3>Classes</h3><ul><li><a href="ChannelMap.html">ChannelMap</a></li><li><a href="ContentIdChange.html">ContentIdChange</a></li><li><a href="ContextREQ.html">ContextREQ</a></li><li><a href="ContextRESP.html">ContextRESP</a></li><li><a href="DeviceREQ.html">DeviceREQ</a></li><li><a href="DeviceRESP.html">DeviceRESP</a></li><li><a href="JoinREQ.html">JoinREQ</a></li><li><a href="JoinRESP.html">JoinRESP</a></li><li><a href="LeaveREQ.html">LeaveREQ</a></li><li><a href="LeaveRESP.html">LeaveRESP</a></li><li><a href="Message.html">Message</a></li><li><a href="MessageDispatcher.html">MessageDispatcher</a></li><li><a href="MessageParams.html">MessageParams</a></li><li><a href="MessagingAdapter.html">MessagingAdapter</a></li><li><a href="Messenger.html">Messenger</a></li><li><a href="MqttMessagingAdapter.html">MqttMessagingAdapter</a></li><li><a href="PahoMqttMessagingAdapter.html">PahoMqttMessagingAdapter</a></li><li><a href="ParameterList.html">ParameterList</a></li><li><a href="PingREQ.html">PingREQ</a></li><li><a href="PingRESP.html">PingRESP</a></li><li><a href="REQParams.html">REQParams</a></li><li><a href="RESParams.html">RESParams</a></li><li><a href="StopTimelineUpdateREQ.html">StopTimelineUpdateREQ</a></li><li><a href="TimelineDeRegistrationREQ.html">TimelineDeRegistrationREQ</a></li><li><a href="TimelineDeRegistrationRESP.html">TimelineDeRegistrationRESP</a></li><li><a href="TimelineEndRegistrationREQ.html">TimelineEndRegistrationREQ</a></li><li><a href="TimelineEndSubscriptionRESP.html">TimelineEndSubscriptionRESP</a></li><li><a href="TimelineQuery.html">TimelineQuery</a></li><li><a href="TimelineRegistrationREQ.html">TimelineRegistrationREQ</a></li><li><a href="TimelineRegistrationRESP.html">TimelineRegistrationRESP</a></li><li><a href="TimelineREQ.html">TimelineREQ</a></li><li><a href="TimelineRESP.html">TimelineRESP</a></li><li><a href="TimelineSubscriptionREQ.html">TimelineSubscriptionREQ</a></li><li><a href="TimelineSubscriptionRESP.html">TimelineSubscriptionRESP</a></li><li><a href="TimelineUpdate.html">TimelineUpdate</a></li><li><a href="TimelineUpdateREQ.html">TimelineUpdateREQ</a></li><li><a href="TimelineUpdateRESP.html">TimelineUpdateRESP</a></li></ul><h3>Events</h3><ul><li><a href="MessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="MessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="MessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="MessagingAdapter.html#event:message">message</a></li><li><a href="Messenger.html#event:message">message</a></li><li><a href="Messenger.html#event:request">request</a></li><li><a href="MqttMessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="MqttMessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="MqttMessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="MqttMessagingAdapter.html#event:message">message</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="PahoMqttMessagingAdapter.html#event:message">message</a></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-MessageFactory.html">MessageFactory</a></li><li><a href="module-MessageIdGenerator.html">MessageIdGenerator</a></li></ul><h3>Classes</h3><ul><li><a href="ChannelMap.html">ChannelMap</a></li><li><a href="ContentIdChange.html">ContentIdChange</a></li><li><a href="ContextREQ.html">ContextREQ</a></li><li><a href="ContextRESP.html">ContextRESP</a></li><li><a href="DeviceREQ.html">DeviceREQ</a></li><li><a href="DeviceRESP.html">DeviceRESP</a></li><li><a href="DeviceStatus.html">DeviceStatus</a></li><li><a href="JoinREQ.html">JoinREQ</a></li><li><a href="JoinRESP.html">JoinRESP</a></li><li><a href="LeaveREQ.html">LeaveREQ</a></li><li><a href="LeaveRESP.html">LeaveRESP</a></li><li><a href="Message.html">Message</a></li><li><a href="MessageDispatcher.html">MessageDispatcher</a></li><li><a href="MessageParams.html">MessageParams</a></li><li><a href="MessagingAdapter.html">MessagingAdapter</a></li><li><a href="Messenger.html">Messenger</a></li><li><a href="MqttMessagingAdapter.html">MqttMessagingAdapter</a></li><li><a href="PahoMqttMessagingAdapter.html">PahoMqttMessagingAdapter</a></li><li><a href="ParameterList.html">ParameterList</a></li><li><a href="PingREQ.html">PingREQ</a></li><li><a href="PingRESP.html">PingRESP</a></li><li><a href="REQParams.html">REQParams</a></li><li><a href="RESParams.html">RESParams</a></li><li><a href="StopTimelineUpdateREQ.html">StopTimelineUpdateREQ</a></li><li><a href="SyncTimelinesAvailable.html">SyncTimelinesAvailable</a></li><li><a href="SyncTimelinesRESP.html">SyncTimelinesRESP</a></li><li><a href="TimelineDeRegistrationREQ.html">TimelineDeRegistrationREQ</a></li><li><a href="TimelineDeRegistrationRESP.html">TimelineDeRegistrationRESP</a></li><li><a href="TimelineEndRegistrationREQ.html">TimelineEndRegistrationREQ</a></li><li><a href="TimelineEndSubscriptionRESP.html">TimelineEndSubscriptionRESP</a></li><li><a href="TimelineQuery.html">TimelineQuery</a></li><li><a href="TimelineRegistrationREQ.html">TimelineRegistrationREQ</a></li><li><a href="TimelineRegistrationRESP.html">TimelineRegistrationRESP</a></li><li><a href="TimelineREQ.html">TimelineREQ</a></li><li><a href="TimelineRESP.html">TimelineRESP</a></li><li><a href="TimelineSubscriptionREQ.html">TimelineSubscriptionREQ</a></li><li><a href="TimelineSubscriptionRESP.html">TimelineSubscriptionRESP</a></li><li><a href="TimelineUpdate.html">TimelineUpdate</a></li><li><a href="TimelineUpdateREQ.html">TimelineUpdateREQ</a></li><li><a href="TimelineUpdateRESP.html">TimelineUpdateRESP</a></li><li><a href="UnexpectedDeviceExit.html">UnexpectedDeviceExit</a></li></ul><h3>Events</h3><ul><li><a href="MessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="MessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="MessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="MessagingAdapter.html#event:message">message</a></li><li><a href="Messenger.html#event:message">message</a></li><li><a href="Messenger.html#event:request">request</a></li><li><a href="MqttMessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="MqttMessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="MqttMessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="MqttMessagingAdapter.html#event:message">message</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionestablished">connectionestablished</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionfailure">connectionfailure</a></li><li><a href="PahoMqttMessagingAdapter.html#event:connectionlost">connectionlost</a></li><li><a href="PahoMqttMessagingAdapter.html#event:message">message</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Dec 07 2017 14:44:57 GMT+0000 (GMT)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 18 2024 20:19:23 GMT+0100 (British Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

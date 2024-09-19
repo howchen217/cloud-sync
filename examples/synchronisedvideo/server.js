@@ -17,6 +17,10 @@ app.use(express.static(path.join(__dirname, "media")));
 
 app.post("/log*", writelog, httpOK);
 
+// Serve static files from 'src' directory
+app.use('/src', express.static(path.join(__dirname, 'src')));
+
+
 server = app.listen(app.get("port"), function() {
     console.log("'Synchronised Video' app server running at port " + server.address().port);
 });

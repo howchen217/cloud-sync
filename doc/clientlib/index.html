@@ -43,14 +43,295 @@
 
 
     <section>
-        <article><h1>Purpose of this document</h1><p>This documentation specifies client library to communicate with the cloud-sync service.</p>
-<h1>Usage</h1><pre class="prettyprint source lang-javascript"><code>// Require cloud-synchroniser module
+        <article><h1>Synchronisation Service Client Library</h1>
+<p><code>CloudSynchroniser</code> is a JS implementation of the client library API for the Synchronisation Service (a.k.a cloud-sync).</p>
+<h3>Version</h3>
+<p>Version <code>2.0.0</code></p>
+<h3>What's New From v1.0.0</h3>
+<ul>
+<li><strong>Synchronisation Timelines</strong>: A <code>synchronisation timeline </code> is a service-generated timeline based on timelines of the same type and origin (i.e. same timelineType and contentId). Clients can only subscribe to synchronisation timelines as opposed to individual timelines.<code>TimelineInfo</code></li>
+<li><strong>Synchronisation Timeline Election:</strong> A Synchronisation Timeline's state (timestamp) is updated by applying an election algorithm to the list of available candidate timelines. Candidate timelines WILL have the same <code>timelineType</code> and <code>contentId</code> values as the sync timeline. The algorithm selects which candidate timeline's state to use to compute the synchronisation timeline's new state. This algorithm runs dynamically and will be triggered when
+<ul>
+<li>timelines are registered or removed</li>
+<li>one of the registered timelines' state has changed significantly (beyond a threshold of <em>40 ms</em> or speed has changed)</li>
+</ul>
+</li>
+</ul>
+<h3>Dependencies</h3>
+<ul>
+<li><a href="https://github.com/bbc/dvbcss-clocks">dvbcss-clocks</a> (Available as an NPM package)</li>
+<li>MQTT Client library : <a href="https://www.npmjs.com/package/paho-mqtt">paho-mqtt</a>   v1.0.3 (Available as an NPM package)</li>
+</ul>
+<h3>Sync Service Endpoints</h3>
+<ul>
+<li>Sync Service Edge (v2.0.0): mqttbroker.edge.platform.2immerse.eu</li>
+</ul>
+<h3>Build the Synchronisation Service Client Library</h3>
+<p>If you wish to build it into a single JS file suitable for the browser (i.e. for including in a webpage) then do this:</p>
+<pre class="prettyprint source"><code>$ grunt
+</code></pre>
+<p>The resulting JS client library is placed in <a href="../../dist/browser/Cloud-SyncKit.js">dist/browser/Cloud-SyncKit.js</a>.</p>
+<hr>
+<h2>CloudSynchroniser API</h2>
+<h3>1. Provide/Remove Timelines for Sync</h3>
+<ul>
+<li><code>URN addTimelineClock(clock, timelineType, timelineId)</code></li>
+<li><code>synchronise(clock, timelineType, contentId)</code></li>
+<li><s><code>URN addTimelineSource(mediaObject, timelineType, contentId)</code></s></li>
+<li><code>removeTimeline(timelineURN)</code></li>
+</ul>
+<h3>2. Find Timelines to Sync</h3>
+<ul>
+<li><code>Promise&lt;TimelineInfo[]&gt; getAvailableTimelines()</code></li>
+</ul>
+<h3>3. Subscribe and get a Timeline Clock</h3>
+<ul>
+<li><code>subscribeTimeline(String timelineUrn)</code></li>
+<li><code>disableTimelineSync(String timelineUrn)</code></li>
+</ul>
+<h3>4. Sync To Timeline</h3>
+<ul>
+<li><code>syncClockToThisTimeline(clock, timelineURN, correlation)</code></li>
+</ul>
+<h3>5. Events</h3>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DeviceRegistrationSuccess</code></td>
+<td>client successfully registered with service</td>
+</tr>
+<tr>
+<td><code>DeviceRegistrationError</code></td>
+<td>client registration failure</td>
+</tr>
+<tr>
+<td><code>WallClockAvailable</code></td>
+<td>Local WallClock synchronised to WallClock service</td>
+</tr>
+<tr>
+<td><code>WallClockUnAvailable</code></td>
+<td>Local WallClock not sync'ed to WallClock service</td>
+</tr>
+<tr>
+<td><code>SyncServiceUnavailable</code></td>
+<td>Connection to Sync Service failed</td>
+</tr>
+<tr>
+<td><code>TimelineAvailable</code></td>
+<td>A requested timeline shadow is available. Includes <code>Timeline</code> property which provides a  <a href="https://github.com/bbc/dvbcss-clocks/blob/master/src/CorrelatedClock.js">dvbcss-clocks clock</a>  object as the local estimate of the timeline</td>
+</tr>
+<tr>
+<td><code>SyncTimelinesAvailable</code></td>
+<td>Array of <code>TimelineInfo</code>* objects representing the synchronisation timelines currently available</td>
+</tr>
+<tr>
+<td><code>SyncTimelinesUnavailable</code></td>
+<td><em>Deprecated</em></td>
+</tr>
+<tr>
+<td><code>LowSyncAccuracy</code></td>
+<td>Emitted when sync accuracy drops below threshold (specified when <code>CloudSynchroniser</code> object is created)</td>
+</tr>
+</tbody>
+</table>
+<h3><code>TimelineInfo</code> object</h3>
+<p><code>TimelineInfo</code> is an object including properties for a given timeline (identified by <code>timelineId</code>).</p>
+<p>Example:</p>
+<pre class="prettyprint source lang-javascript"><code>{
+    timelineId: &quot;urn:123:fd24c9ef-2a7f-4622-9de2-41f7bd38fd85&quot;, 
+    sessionId : &quot;123&quot;,
+    timelineType: &quot;tag:rd.bbc.co.uk,2015-12-08:dvb:css:timeline:simple-elapsed-time:1000&quot;,
+    frequency: 1000,
+    contentId: &quot;https://download.blender.org/durian/trailer/sintel_trailer-720p.mp4&quot;,
+    channel: &quot;Sessions/123/timelines/urn:123:fd24c9ef-2a7f-4622-9de2-41f7bd38fd85/state&quot;,
+    providerId: &quot;820b504b-91f9-484f-a3e0-91a2c09e39b2&quot;,
+    providerType: &quot;synccontroller&quot;,
+    useForSessionSync: true,
+    available: true,
+    createdOn: &quot;2018-06-11T11:20:01.614Z&quot;
+};
+</code></pre>
+<hr>
+<h1>Usage Summary</h1>
+<h2>1. Create a CloudSynchroniser object</h2>
+<p>Use the factory <code>getCloudSynchroniser()</code> method to create a CloudSynchroniser object and register the client to the Sync Service via a known endpoint (<code>syncUrl</code> parameter).</p>
+<p>To join an existing synchronisation session, use the same <code>sessionId</code> for all your clients. The  <code>deviceId</code> parameter identifies the client and is of type <code>string</code>. It needs to be unique within the session.</p>
+<p>The <code>options</code> parameter is an object specifying preferences such as the sync mode.</p>
+<pre class="prettyprint source lang-javascript"><code>// Require cloud-synchroniser module
 var cloudSyncKit = require(&quot;CloudSyncKit&quot;);
 
-// Create cloud synchroniser
-var synchroniser = cloudSyncKit.getCloudSynchroniser(syncUrl, sessionId, deviceId);
+var syncUrl = &quot;mqttbroker.edge.platform.2immerse.eu&quot;; // a Sync Service MQTT endpoint
+var sessionId = &quot;223dsf452asd&quot;; // a globally-unique session identifier
+var deviceId = &quot;chris_iphone&quot;; // a client identifier 
+var options = { syncTimelineElection: cloudSyncKit.SyncTLElection.DYNAMIC }; // options e.g. desired sync mode
 
-// TODO Add usage example</code></pre></article>
+// Create cloud synchroniser
+var synchroniser = cloudSyncKit.getCloudSynchroniser(syncUrl, sessionId, deviceId, options);
+
+</code></pre>
+<h3>1.1. Sync Modes</h3>
+<table>
+<thead>
+<tr>
+<th>Sync Mode</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EARLIEST_FIRST</code></td>
+<td>1</td>
+<td>First-to-join master mode. The sync timeline is locked to the timeline that was registered first for this session.</td>
+</tr>
+<tr>
+<td><code>LOWEST_DISPERSION</code></td>
+<td>2</td>
+<td>Closest-client master mode. The sync timeline state is computed from the state of the timeline with the lowest reported dispersion (RTT) value.</td>
+</tr>
+<tr>
+<td><code>USE_ALL</code></td>
+<td>3</td>
+<td>DVB-CSS MSAS mode. The sync timeline state is computed from Earliest/Actual/Latest Presentation Timestamps reported by each client.</td>
+</tr>
+<tr>
+<td><code>DYNAMIC</code></td>
+<td>4</td>
+<td>No master mode. The sync timeline state is computed from the timeline to have undergone the most recent  significant state-change. i.e. any client can change the state of the sync timeline as long as it exports a timeline of the same type and origin (same <code>timelineType</code> and <code>contentId</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Registration Success And WallClock Availability</h3>
+<p><code>DeviceRegistrationSuccess</code> and  <code>DeviceRegistrationError</code> events are emitted by the CloudSynchroniser object to indicate registration success or failure respectively.</p>
+<p>A <code>SyncServiceUnavailable</code> event is emitted if the connection to the Sync Service is unsuccessful.</p>
+<p>After successful registration, the <code>CloudSynchroniser</code> initialisation phase completion is indicated by  <code>WallClockAvailable</code> event. A synchronised wallclock is now available as the <code>wallclock</code> property of the <code>CloudSynchroniser</code> object.</p>
+<pre class="prettyprint source lang-javascript"><code>
+synchroniser.on(&quot;WallClockAvailable&quot;, function () { 
+
+    console.info(&quot;wallclock time:&quot;, synchroniser.wallclock.now()); 
+
+});
+
+</code></pre>
+<h2>2.  Register a local timeline for sync</h2>
+<p>It is recommended to use a <a href="https://github.com/bbc/dvbcss-clocks">dvbcss-clocks clock</a> object to drive a media player and use that clock object to register the timeline. This provides more accurate reporting of the timeline progress; timestamps read from the clock object are more accurate than from the media player itself.</p>
+<p>The library doesn't currently support registering a media player as a timeline source (this will be added to the API if there is a demand for it).</p>
+<h3>2.1 Create a clock object for the media element's timeline</h3>
+<p>Create a clock object using the CloudSynchroniser's <code>wallclock</code> as parent clock.</p>
+<pre class="prettyprint source lang-javascript"><code>
+
+var videoClock = new CorrelatedClock(synchroniser.wallclock, {
+        tickRate: 1000,  // timeline units in milliseconds
+        correlation: new Correlation({
+            parentTime: synchroniser.wallclock.now(),
+            childTime: videoElement.currentTime * 1000
+        })
+    });
+</code></pre>
+<h3>2.2 Slave your media player to the created clock</h3>
+<p>Once registered with the Sync Service, your clock object will be updated dynamically by the service. The media player needs to be kept synchronised with the clock object. You can use the Adaptive Media Playback algorithm to locally sync the media player to the clock. This is more suitable for video. For audio, a seek might be the best option.</p>
+<ul>
+<li>An example of a clock object locked to a video element is found in <code>examples/synchronisedvideo/src/js/VideoClock.js</code></li>
+<li>An implementation of the Adaptive Media Playback algorithm is found in the <a href="https://gitlab-ext.irt.de/2-immerse/cloud-sync/blob/master/examples/synchronisedvideo/src/js/VideoSynchroniser.js">Synchronised Video</a> example: <code>examples/synchronisedvideo/src/js/VideoSynchroniser.js</code></li>
+</ul>
+<h3>2.3 Register the clock with the CloudSynchroniser</h3>
+<h4>- <code>synchronise()</code></h4>
+<p>Use CloudSynchroniser's <code>synchronise()</code> method to register a timeline to be used for session-wide synchronisation.
+This ensures that the clock object is locked to the session-wide synchronisation timeline (generated by the service when a timeline is registered) and that the sync timeline is advertised to all clients.</p>
+<pre class="prettyprint source lang-javascript"><code>var  timelineType = &quot;tag:rd.bbc.co.uk,2015-12-08:dvb:css:timeline:simple-elapsed-time:1000&quot;;
+synchroniser.synchronise(videoClock, timelineType, video.currentSource().src);
+</code></pre>
+<ul>
+<li>
+<p><code>timelineType</code> parameter</p>
+<p>This is a URN string for this type of timeline and it is recommended to follow the naming scheme for DVB-CSS Timeline Selector (Section 5.3.3 of <a href="http://www.etsi.org/deliver/etsi_ts/103200_103299/10328602/01.02.01_60/ts_10328602v010201p.pdf">ETSI TS 103 286-2</a>). You can make your own (and use any string you like)!</p>
+<p>For MPG-DASH:</p>
+<ul>
+<li><code>&quot;urn:dvb:css:timeline:mpd:period:rel:&lt;ticks-per-second&gt;&quot; </code></li>
+<li><code>&quot;urn:dvb:css:timeline:mpd:period:rel:&lt;ticks-per-second&gt;:&lt;period-id&gt;&quot;</code></li>
+</ul>
+<p>For media based on the ISOBMFF format:</p>
+<ul>
+<li><code>&quot;urn:dvb:css:timeline:ct&quot;</code></li>
+</ul>
+</li>
+<li>
+<p><code>contentId</code> parameter</p>
+<p>This is a string that specifies the source of the timeline. Use the media source (e.g. the media URL) if available. If the timeline's source is not a media element, use a string that will be unique in this session e.g. <code>&quot;my_experience_timeline_clock&quot;</code></p>
+</li>
+</ul>
+<h4>- <code>addTimelineClock()</code></h4>
+<p>You can also use the CloudSynchroniser's <code>addTimelineClock()</code> method to register a timeline for session-wide sync. Set <code>useForSessionSync</code> as <code>true</code> in the <code>options</code> parameter.</p>
+<pre class="prettyprint source lang-javascript"><code>    var options = {
+        useForSessionSync: true
+    };
+
+    synchroniser.addTimelineClock(videoClock, timelineType, video.currentSource().src, options)
+    .then((timelineId)=>{
+        console.log(&quot;timeline registered, id: &quot;, timelineId);
+    });
+</code></pre>
+<p><strong>TODO</strong>:</p>
+<ul>
+<li>[ ] check returned Promise from <code>addTimelineClock()</code></li>
+</ul>
+<h2>3.  Find a timeline to sync with</h2>
+<p>You can discover timelines available for sync by</p>
+<p>EITHER</p>
+<ul>
+<li>
+<p>Listening for the <code>SyncTimelinesAvailable</code> event</p>
+<p>This event contains an array of <code>TimelineInfo</code> objects representing the synchronisation timelines currently available.</p>
+</li>
+</ul>
+<p>OR</p>
+<ul>
+<li>
+<p>Calling the <code>getAvailableTimelines()</code> API method</p>
+<p><code>getAvailableTimelines()</code> asynchronously returns (via a Promise) an array of available timelines (<code>TimelineInfo</code> objects).</p>
+<pre class="prettyprint source lang-javascript"><code>    synchroniser.getAvailableTimelines()
+    .then((timelines)=>{
+        console.log(timelines);
+    });
+</code></pre>
+</li>
+</ul>
+<p>A <code>TimelineInfo</code> instance contains properties that describe/identify a timeline. Use <code>timelineType</code> and <code>contentId</code> to look for a timeline to sync with. The selected timeline is identified by the <code>timelineId</code> property.</p>
+<h2>4. Subscribe to a selected timeline</h2>
+<p>Use <code>subscribeTimeline()</code> to subscribe to a timeline using its <code>timelineId</code>. When the timeline is available locally, a <code>TimelineAvailable</code> event is fired by the CloudSynchroniser object (containing the ).</p>
+<pre class="prettyprint source lang-javascript"><code>   
+   var timelineClock, timelineId = &quot;selected_timeline_id&quot;;
+   
+   // subscribe to timeline and wait for TimelineAvailable event
+   synchroniser.subscribeTimeline(timelineId)
+   .then((responseCode)=>{
+       if responseCode === 0 console.log(&quot;success&quot;);
+   });
+
+   // Handle TimelineAvailable event and retrieve clock object
+   synchroniser.on(&quot;TimelineAvailable&quot;, function (id) {
+      if (id===timelineId) 
+           timelineClock = synchroniser.getTimelineClockById(timelineId);
+
+           timelineClock.on(&quot;change&quot;, updateVideoPlayer());
+   });
+</code></pre>
+<h2>Documentation</h2>
+<p>JSDoc documentation can be built:</p>
+<pre><code>$ grunt jsdoc
+</code></pre>
+<p>Documentation is generated and output as HTML into the <code>doc</code> subfolder.</p>
+<h2>Authors</h2>
+<ul>
+<li>Rajiv Ramdhany (BBC)</li>
+<li>Christoph Ziegler (IRT)</li>
+</ul></article>
     </section>
 
 
@@ -61,13 +342,13 @@ var synchroniser = cloudSyncKit.getCloudSynchroniser(syncUrl, sessionId, deviceI
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CloudSyncKit.html">CloudSyncKit</a></li></ul><h3>Classes</h3><ul><li><a href="CloudSynchroniser.html">CloudSynchroniser</a></li><li><a href="WallClockSynchroniser.html">WallClockSynchroniser</a></li></ul><h3>Events</h3><ul><li><a href="CloudSynchroniser.html#event:ContentIdChangedOnDevice">ContentIdChangedOnDevice</a></li><li><a href="CloudSynchroniser.html#event:ContentIDRequest">ContentIDRequest</a></li><li><a href="CloudSynchroniser.html#event:DeviceRegistrationError">DeviceRegistrationError</a></li><li><a href="CloudSynchroniser.html#event:DeviceRegistrationSuccess">DeviceRegistrationSuccess</a></li><li><a href="CloudSynchroniser.html#event:LowSyncAccuracy">LowSyncAccuracy</a></li><li><a href="CloudSynchroniser.html#event:SyncServiceUnavailable">SyncServiceUnavailable</a></li><li><a href="CloudSynchroniser.html#event:SyncTimelineAvailable">SyncTimelineAvailable</a></li><li><a href="CloudSynchroniser.html#event:SyncTimelineUnavailable">SyncTimelineUnavailable</a></li><li><a href="CloudSynchroniser.html#event:TimelineAvailable">TimelineAvailable</a></li><li><a href="CloudSynchroniser.html#event:TimelineRequest">TimelineRequest</a></li><li><a href="CloudSynchroniser.html#event:WallClockAvailable">WallClockAvailable</a></li><li><a href="CloudSynchroniser.html#event:WallClockUnAvailable">WallClockUnAvailable</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="CloudSyncKit.html">CloudSyncKit</a></li></ul><h3>Classes</h3><ul><li><a href="CloudSynchroniser.html">CloudSynchroniser</a></li><li><a href="WallClockSynchroniser.html">WallClockSynchroniser</a></li></ul><h3>Events</h3><ul><li><a href="CloudSynchroniser.html#event:ContentIdChangedOnDevice">ContentIdChangedOnDevice</a></li><li><a href="CloudSynchroniser.html#event:ContentIDRequest">ContentIDRequest</a></li><li><a href="CloudSynchroniser.html#event:DeviceRegistrationError">DeviceRegistrationError</a></li><li><a href="CloudSynchroniser.html#event:DeviceRegistrationSuccess">DeviceRegistrationSuccess</a></li><li><a href="CloudSynchroniser.html#event:LowSyncAccuracy">LowSyncAccuracy</a></li><li><a href="CloudSynchroniser.html#event:SyncServiceUnavailable">SyncServiceUnavailable</a></li><li><a href="CloudSynchroniser.html#event:SyncTimelinesAvailable">SyncTimelinesAvailable</a></li><li><a href="CloudSynchroniser.html#event:SyncTimelineUnavailable">SyncTimelineUnavailable</a></li><li><a href="CloudSynchroniser.html#event:TimelineAvailable">TimelineAvailable</a></li><li><a href="CloudSynchroniser.html#event:TimelineRequest">TimelineRequest</a></li><li><a href="CloudSynchroniser.html#event:WallClockAvailable">WallClockAvailable</a></li><li><a href="CloudSynchroniser.html#event:WallClockUnAvailable">WallClockUnAvailable</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Dec 07 2017 14:44:58 GMT+0000 (GMT)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 18 2024 20:19:23 GMT+0100 (British Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Timeline<span class="signature">(timelineId, timelineType, contentId, clock<span class="signature-attributes">opt</span>, updateChannel<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Timeline<span class="signature">(timelineId, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
         
             <div class="class-description">Timeline</div>
         
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="Timeline"><span class="type-signature"></span>new Timeline<span class="signature">(timelineId, timelineType, contentId, clock<span class="signature-attributes">opt</span>, updateChannel<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Timeline"><span class="type-signature"></span>new Timeline<span class="signature">(timelineId, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -81,8 +81,6 @@
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -116,14 +114,66 @@
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
             <td class="description last">Unique identifier for this timeline</td>
         </tr>
 
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
         <tr>
@@ -143,6 +193,8 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -153,10 +205,51 @@
             
                 <td class="default">
                 
+                    null
+                
                 </td>
             
 
             <td class="description last">Timeline type specifier</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>frequency</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1000
+                
+                </td>
+            
+
+            <td class="description last">Number of ticks per second on this timeline</td>
         </tr>
 
     
@@ -178,6 +271,8 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -187,6 +282,8 @@
 
             
                 <td class="default">
+                
+                    null
                 
                 </td>
             
@@ -230,7 +327,7 @@
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last">Timeline clock</td>
         </tr>
 
     
@@ -267,6 +364,287 @@
                     null
                 
                 </td>
+            
+
+            <td class="description last">Channel to which updates of the timeline clock are reported</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thresholdSecs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0.02
+                
+                </td>
+            
+
+            <td class="description last">Signifcance threshold for changes to timeline clock</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useForSessionSync</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">TRUE if this timeline shall be considered for synchronising, the whole session by the sync controller, else FALSE.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>writable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">TRUE if this timeline can be changed by calling timeline.update()</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Timeline.js.html">Timeline.js</a>, <a href="Timeline.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(timestamp)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Updates clock correlation and speed, if change is significant.Updates do only have an affect on writable timelines.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timestamp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Timestamp.html">Timestamp</a></span>
+
+
+            
+            </td>
+
+            
+
             
 
             <td class="description last"></td>
@@ -310,7 +688,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Timeline.js.html">Timeline.js</a>, <a href="Timeline.js.html#line17">line 17</a>
+        <a href="Timeline.js.html">Timeline.js</a>, <a href="Timeline.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -335,26 +713,34 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    TRUE if clock was updated, else FALSE
+</div>
 
 
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
 
     
-    </div>
 
-    
 
-    
 
-    
 
-    
 
-    
-
-    
-
-    
-
+        
     
 
     
@@ -376,7 +762,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Dec 07 2017 14:44:58 GMT+0000 (GMT)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 18 2024 20:19:24 GMT+0100 (British Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

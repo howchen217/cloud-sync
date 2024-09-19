@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>CloudSynchroniser<span class="signature">(syncUrl, sessionId, contextId, deviceId)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>CloudSynchroniser<span class="signature">(syncUrl, sessionId, contextId, deviceId, options)</span><span class="type-signature"></span></h2>
         
             <div class="class-description">Client library of the cloud Synchronisation Service.</div>
         
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="CloudSynchroniser"><span class="type-signature"></span>new CloudSynchroniser<span class="signature">(syncUrl, sessionId, contextId, deviceId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="CloudSynchroniser"><span class="type-signature"></span>new CloudSynchroniser<span class="signature">(syncUrl, sessionId, contextId, deviceId, options)</span><span class="type-signature"></span></h4>
     
 
     
@@ -174,6 +174,98 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>syncTimelineElection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    CloudSyncKit.SyncTLElection.EARLIEST_FIRST
+                
+                </td>
+            
+
+            <td class="description last">Specifies the algorithm to be used by the sync service to elect the synchronisation timeline</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -211,7 +303,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line114">line 114</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -240,6 +332,8 @@
 
     <li><a href="CloudSynchroniser.html#event:ContentIDRequest">CloudSynchroniser#event:ContentIDRequest</a></li>
 </ul>
+
+
 
 
 
@@ -328,7 +422,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line369">line 369</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line475">line 475</a>
     </li></ul></dd>
     
 
@@ -400,7 +494,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line347">line 347</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line453">line 453</a>
     </li></ul></dd>
     
 
@@ -472,7 +566,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line358">line 358</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line464">line 464</a>
     </li></ul></dd>
     
 
@@ -544,7 +638,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line336">line 336</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line442">line 442</a>
     </li></ul></dd>
     
 
@@ -568,10 +662,7 @@
 
 
 <div class="description">
-    <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-CorrelatedClock">Clock</a>
-object representing the wallclock. The wallclock is available after the
-WallClockAvailable event has been fired. Before that, 
-the value of wallclock is NULL.
+    <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-CorrelatedClock">Clock</a>object representing the wallclock. The wallclock is available after theWallClockAvailable event has been fired. Before that, the value of wallclock is NULL.
 </div>
 
 
@@ -619,7 +710,7 @@ the value of wallclock is NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line322">line 322</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line428">line 428</a>
     </li></ul></dd>
     
 
@@ -647,7 +738,7 @@ the value of wallclock is NULL.
     
 
     
-    <h4 class="name" id="addTimelineClock"><span class="type-signature"></span>addTimelineClock<span class="signature">(clock, timelineType, contentId)</span><span class="type-signature"> &rarr; {Promise.&lt;number>}</span></h4>
+    <h4 class="name" id="addTimelineClock"><span class="type-signature"></span>addTimelineClock<span class="signature">(clock, timelineType, contentId, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;number>}</span></h4>
     
 
     
@@ -655,8 +746,7 @@ the value of wallclock is NULL.
 
 
 <div class="description">
-    Registers a timeline with the Synchronisation Service. The timeline is 
-represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBase">Clock</a> object.
+    Registers a timeline with the Synchronisation Service. The timeline is represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBase">Clock</a> object.
 </div>
 
 
@@ -679,6 +769,8 @@ represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBa
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -705,6 +797,14 @@ represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBa
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -727,6 +827,14 @@ represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBa
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -751,10 +859,159 @@ represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBa
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last">(previousely: timelineId, redundant)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>useForSessionSync</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>writable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -795,7 +1052,7 @@ represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBa
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line510">line 510</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line617">line 617</a>
     </li></ul></dd>
     
 
@@ -805,6 +1062,8 @@ represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBa
 
     
 </dl>
+
+
 
 
 
@@ -859,9 +1118,7 @@ represented by a <a href="https://doclets.io/bbc/dvbcss-clocks/master#dl-ClockBa
 
 
 <div class="description">
-    Registers a timeline with the Synchronisation Service. The timeline is 
-represented by a media object that exposes a known API to inspect the
-media playback and read the current timeline position and speed.
+    Registers a timeline with the Synchronisation Service. The timeline is represented by a media object that exposes a known API to inspect themedia playback and read the current timeline position and speed.
 </div>
 
 
@@ -1000,7 +1257,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line498">line 498</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line602">line 602</a>
     </li></ul></dd>
     
 
@@ -1010,6 +1267,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -1157,7 +1416,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line449">line 449</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line553">line 553</a>
     </li></ul></dd>
     
 
@@ -1167,6 +1426,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -1404,7 +1665,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line818">line 818</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line996">line 996</a>
     </li></ul></dd>
     
 
@@ -1414,6 +1675,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -1490,7 +1753,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line388">line 388</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line494">line 494</a>
     </li></ul></dd>
     
 
@@ -1524,323 +1787,6 @@ media playback and read the current timeline position and speed.
 
 
 
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="enableTimelineSync"><span class="type-signature"></span>enableTimelineSync<span class="signature">(timelineId)</span><span class="type-signature"> &rarr; {Promise.&lt;number>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Registers for updates of a given timeline.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>timelineId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">TimelineId</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line738">line 738</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<h5>Fires:</h5>
-<ul>
-    <li><a href="CloudSynchroniser.html#event:TimelineAvailable">CloudSynchroniser#event:TimelineAvailable</a></li>
-</ul>
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    returnCode
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;number></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="findDevicesPlayingContent"><span class="type-signature"></span>findDevicesPlayingContent<span class="signature">(contentId)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;string>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Get all devices in the current session that play given piece of content.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>contentId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line636">line 636</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    List of device identifiers
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;string>></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -1904,7 +1850,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line432">line 432</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line537">line 537</a>
     </li></ul></dd>
     
 
@@ -1914,6 +1860,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -2012,7 +1960,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line408">line 408</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line514">line 514</a>
     </li></ul></dd>
     
 
@@ -2022,6 +1970,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -2057,6 +2007,94 @@ media playback and read the current timeline position and speed.
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getAvailableSyncTimelines"><span class="type-signature"></span>getAvailableSyncTimelines<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get all available synchronisation timelines for this session.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line814">line 814</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2120,7 +2158,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line658">line 658</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line796">line 796</a>
     </li></ul></dd>
     
 
@@ -2130,6 +2168,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -2155,312 +2195,6 @@ media playback and read the current timeline position and speed.
     <dd>
         
 <span class="param-type">Promise.&lt;Array.&lt;TimelineInfo>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getAvailableTimelinesByType"><span class="type-signature"></span>getAvailableTimelinesByType<span class="signature">(timelineType)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;TimelineId>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Get all timelines of a given type.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>timelineType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line726">line 726</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;TimelineId>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getAvailableTimelinesForContent"><span class="type-signature"></span>getAvailableTimelinesForContent<span class="signature">(contentId)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;TimelineId>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Get all timelines for a given piece of content.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>contentId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line715">line 715</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;TimelineId>></span>
 
 
     </dd>
@@ -2579,7 +2313,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line461">line 461</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line565">line 565</a>
     </li></ul></dd>
     
 
@@ -2589,6 +2323,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -2618,358 +2354,6 @@ media playback and read the current timeline position and speed.
     <dd>
         
 <span class="param-type">Promise.&lt;number></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getDeviceAvailableTimelines"><span class="type-signature"></span>getDeviceAvailableTimelines<span class="signature">(deviceId, contentId)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;TimelineId>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Get all timelines for a given piece of content and a given device.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>deviceId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>contentId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line680">line 680</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;TimelineId>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getDeviceAvailableTimelinesByType"><span class="type-signature"></span>getDeviceAvailableTimelinesByType<span class="signature">(deviceId, timelineType)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;TimelineId>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Get all available timelines of a given type froma given device.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>deviceId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>timelineType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line704">line 704</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;TimelineId>></span>
 
 
     </dd>
@@ -3088,7 +2472,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line599">line 599</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line784">line 784</a>
     </li></ul></dd>
     
 
@@ -3098,6 +2482,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -3245,7 +2631,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line469">line 469</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line573">line 573</a>
     </li></ul></dd>
     
 
@@ -3273,13 +2659,15 @@ media playback and read the current timeline position and speed.
 
 
 
+
+
         
             
 
     
 
     
-    <h4 class="name" id="startContentMonitorForDevice"><span class="type-signature"></span>startContentMonitorForDevice<span class="signature">(deviceId)</span><span class="type-signature"> &rarr; {Promise.&lt;number>}</span></h4>
+    <h4 class="name" id="subscribeTimeline"><span class="type-signature"></span>subscribeTimeline<span class="signature">(timelineId)</span><span class="type-signature"> &rarr; {Promise.&lt;number>}</span></h4>
     
 
     
@@ -3287,7 +2675,7 @@ media playback and read the current timeline position and speed.
 
 
 <div class="description">
-    Monitor content changes on a given device.
+    Registers for updates of a given timeline.
 </div>
 
 
@@ -3323,13 +2711,13 @@ media playback and read the current timeline position and speed.
 
         <tr>
             
-                <td class="name"><code>deviceId</code></td>
+                <td class="name"><code>timelineId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">TimelineId</span>
 
 
             
@@ -3380,7 +2768,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line612">line 612</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line847">line 847</a>
     </li></ul></dd>
     
 
@@ -3397,163 +2785,8 @@ media playback and read the current timeline position and speed.
 
 <h5>Fires:</h5>
 <ul>
-    <li><a href="CloudSynchroniser.html#event:ContentIdChangedOnDevice">CloudSynchroniser#event:ContentIdChangedOnDevice</a></li>
+    <li><a href="CloudSynchroniser.html#event:TimelineAvailable">CloudSynchroniser#event:TimelineAvailable</a></li>
 </ul>
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    returnCode
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;number></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="stopContentMonitorForDevice"><span class="type-signature"></span>stopContentMonitorForDevice<span class="signature">(deviceId)</span><span class="type-signature"> &rarr; {Promise.&lt;number>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Stop monitoring content changes for a given device.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>deviceId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line626">line 626</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
 
 
 
@@ -3743,7 +2976,7 @@ media playback and read the current timeline position and speed.
             
                 <td class="default">
                 
-                    {parentTime:0, childTime:0, speed: 1}
+                    {parentTime:0, childTime:0, errorGrowthRate: 0, initialError: 0}
                 
                 </td>
             
@@ -3789,7 +3022,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line784">line 784</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line965">line 965</a>
     </li></ul></dd>
     
 
@@ -3814,112 +3047,6 @@ media playback and read the current timeline position and speed.
 
 
 
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="whoPlayingWhat"><span class="type-signature"></span>whoPlayingWhat<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Object.&lt;string, Array.&lt;string>>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Query content information for all devices in the current session.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line648">line 648</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    Key-value map: key (deviceId), value(contentId[])
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Object.&lt;string, Array.&lt;string>>></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -4076,7 +3203,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line106">line 106</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -4086,6 +3213,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -4162,7 +3291,7 @@ media playback and read the current timeline position and speed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line69">line 69</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line113">line 113</a>
     </li></ul></dd>
     
 
@@ -4172,6 +3301,8 @@ media playback and read the current timeline position and speed.
 
     
 </dl>
+
+
 
 
 
@@ -4204,8 +3335,7 @@ media playback and read the current timeline position and speed.
 
 
 <div class="description">
-    An error occured during when the client aimed at registrating 
-at the Synchronisation Service.
+    An error occured during when the client aimed at registrating at the Synchronisation Service.
 </div>
 
 
@@ -4272,14 +3402,7 @@ at the Synchronisation Service.
 
             
 
-            <td class="description last">Possible values:
-<ul>
-  <li>0 ... No error</li>
-  <li>1 ... Failure during setup of Synchronisation-Service connection</li>
-  <li>2 ... Failed to send Join request</li>
-  <li>3 ... Received invalid wallclock url from Synchronisation Service</li>
-  <li>4 ... Invalid SessionSyncController url</li>
-</ul></td>
+            <td class="description last">Possible values:<ul>  <li>0 ... No error</li>  <li>1 ... Failure during setup of Synchronisation-Service connection</li>  <li>2 ... Failed to send Join request</li>  <li>3 ... Received invalid wallclock url from Synchronisation Service</li>  <li>4 ... Invalid SessionSyncController url</li></ul></td>
         </tr>
 
     
@@ -4341,7 +3464,7 @@ at the Synchronisation Service.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line26">line 26</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -4351,6 +3474,8 @@ at the Synchronisation Service.
 
     
 </dl>
+
+
 
 
 
@@ -4489,7 +3614,7 @@ at the Synchronisation Service.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line19">line 19</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -4499,6 +3624,8 @@ at the Synchronisation Service.
 
     
 </dl>
+
+
 
 
 
@@ -4660,7 +3787,7 @@ at the Synchronisation Service.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line98">line 98</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line142">line 142</a>
     </li></ul></dd>
     
 
@@ -4670,6 +3797,8 @@ at the Synchronisation Service.
 
     
 </dl>
+
+
 
 
 
@@ -4808,7 +3937,7 @@ at the Synchronisation Service.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line57">line 57</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line101">line 101</a>
     </li></ul></dd>
     
 
@@ -4836,13 +3965,15 @@ at the Synchronisation Service.
 
 
 
+
+
         
             
 
     
 
     
-    <h4 class="name" id="event:SyncTimelineAvailable">SyncTimelineAvailable</h4>
+    <h4 class="name" id="event:SyncTimelinesAvailable">SyncTimelinesAvailable</h4>
     
 
     
@@ -4924,13 +4055,13 @@ at the Synchronisation Service.
 
         <tr>
             
-                <td class="name"><code>timeline</code></td>
+                <td class="name"><code>timelines</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Timeline</span>
+<span class="param-type">Array.&lt;Timeline></span>
 
 
             
@@ -4979,7 +4110,7 @@ at the Synchronisation Service.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line82">line 82</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line126">line 126</a>
     </li></ul></dd>
     
 
@@ -4989,6 +4120,8 @@ at the Synchronisation Service.
 
     
 </dl>
+
+
 
 
 
@@ -5150,7 +4283,7 @@ at the Synchronisation Service.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line90">line 90</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line134">line 134</a>
     </li></ul></dd>
     
 
@@ -5160,6 +4293,8 @@ at the Synchronisation Service.
 
     
 </dl>
+
+
 
 
 
@@ -5321,7 +4456,7 @@ at the Synchronisation Service.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line74">line 74</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line118">line 118</a>
     </li></ul></dd>
     
 
@@ -5331,6 +4466,8 @@ at the Synchronisation Service.
 
     
 </dl>
+
+
 
 
 
@@ -5407,7 +4544,7 @@ at the Synchronisation Service.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line64">line 64</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line108">line 108</a>
     </li></ul></dd>
     
 
@@ -5417,6 +4554,8 @@ at the Synchronisation Service.
 
     
 </dl>
+
+
 
 
 
@@ -5449,8 +4588,7 @@ at the Synchronisation Service.
 
 
 <div class="description">
-    The connection to the wallclock service has become available.
-A local copy of the wallclock is available
+    The connection to the wallclock service has become available.A local copy of the wallclock is available
 </div>
 
 
@@ -5556,7 +4694,7 @@ A local copy of the wallclock is available
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line42">line 42</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -5566,6 +4704,8 @@ A local copy of the wallclock is available
 
     
 </dl>
+
+
 
 
 
@@ -5704,7 +4844,7 @@ A local copy of the wallclock is available
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CloudSynchroniser.js.html">CloudSynchroniser.js</a>, <a href="CloudSynchroniser.js.html#line50">line 50</a>
+        <a href="client_CloudSynchroniser.js.html">client/CloudSynchroniser.js</a>, <a href="client_CloudSynchroniser.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -5714,6 +4854,8 @@ A local copy of the wallclock is available
 
     
 </dl>
+
+
 
 
 
@@ -5744,13 +4886,13 @@ A local copy of the wallclock is available
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CloudSyncKit.html">CloudSyncKit</a></li></ul><h3>Classes</h3><ul><li><a href="CloudSynchroniser.html">CloudSynchroniser</a></li><li><a href="WallClockSynchroniser.html">WallClockSynchroniser</a></li></ul><h3>Events</h3><ul><li><a href="CloudSynchroniser.html#event:ContentIdChangedOnDevice">ContentIdChangedOnDevice</a></li><li><a href="CloudSynchroniser.html#event:ContentIDRequest">ContentIDRequest</a></li><li><a href="CloudSynchroniser.html#event:DeviceRegistrationError">DeviceRegistrationError</a></li><li><a href="CloudSynchroniser.html#event:DeviceRegistrationSuccess">DeviceRegistrationSuccess</a></li><li><a href="CloudSynchroniser.html#event:LowSyncAccuracy">LowSyncAccuracy</a></li><li><a href="CloudSynchroniser.html#event:SyncServiceUnavailable">SyncServiceUnavailable</a></li><li><a href="CloudSynchroniser.html#event:SyncTimelineAvailable">SyncTimelineAvailable</a></li><li><a href="CloudSynchroniser.html#event:SyncTimelineUnavailable">SyncTimelineUnavailable</a></li><li><a href="CloudSynchroniser.html#event:TimelineAvailable">TimelineAvailable</a></li><li><a href="CloudSynchroniser.html#event:TimelineRequest">TimelineRequest</a></li><li><a href="CloudSynchroniser.html#event:WallClockAvailable">WallClockAvailable</a></li><li><a href="CloudSynchroniser.html#event:WallClockUnAvailable">WallClockUnAvailable</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="CloudSyncKit.html">CloudSyncKit</a></li></ul><h3>Classes</h3><ul><li><a href="CloudSynchroniser.html">CloudSynchroniser</a></li><li><a href="WallClockSynchroniser.html">WallClockSynchroniser</a></li></ul><h3>Events</h3><ul><li><a href="CloudSynchroniser.html#event:ContentIdChangedOnDevice">ContentIdChangedOnDevice</a></li><li><a href="CloudSynchroniser.html#event:ContentIDRequest">ContentIDRequest</a></li><li><a href="CloudSynchroniser.html#event:DeviceRegistrationError">DeviceRegistrationError</a></li><li><a href="CloudSynchroniser.html#event:DeviceRegistrationSuccess">DeviceRegistrationSuccess</a></li><li><a href="CloudSynchroniser.html#event:LowSyncAccuracy">LowSyncAccuracy</a></li><li><a href="CloudSynchroniser.html#event:SyncServiceUnavailable">SyncServiceUnavailable</a></li><li><a href="CloudSynchroniser.html#event:SyncTimelinesAvailable">SyncTimelinesAvailable</a></li><li><a href="CloudSynchroniser.html#event:SyncTimelineUnavailable">SyncTimelineUnavailable</a></li><li><a href="CloudSynchroniser.html#event:TimelineAvailable">TimelineAvailable</a></li><li><a href="CloudSynchroniser.html#event:TimelineRequest">TimelineRequest</a></li><li><a href="CloudSynchroniser.html#event:WallClockAvailable">WallClockAvailable</a></li><li><a href="CloudSynchroniser.html#event:WallClockUnAvailable">WallClockUnAvailable</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Dec 07 2017 14:44:58 GMT+0000 (GMT)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 18 2024 20:19:23 GMT+0100 (British Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>
